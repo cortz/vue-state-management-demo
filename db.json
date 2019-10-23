@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "name": "Make a to do list",
+      "isDone": true
+    },
+    {
+      "id": 2,
+      "name": "Check off first item",
+      "isDone": false
+    },
+    {
+      "id": 3,
+      "name": "Realize you already did 2 things on the list",
+      "isDone": false
+    },
+    {
+      "id": 4,
+      "name": "Reward yourself with a nice, long nap",
+      "isDone": false
+    }
+  ]
+}
