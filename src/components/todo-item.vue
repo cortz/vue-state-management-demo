@@ -1,34 +1,38 @@
 <template>
-  <li>
-    <input type="checkbox" :id="todo.id" v-model="todo.isDone" @change="updateTodo(todo)">
-    <label :for="todo.id" :class="todo.isDone ? 'done' : ''">{{todo.name}}</label>
-  </li>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      :id="todo.id"
+      v-model="todo.isDone"
+      @change="updateTodo(todo)">
+
+    <label
+      :class="{ 'form-check-label': true, 'done': todo.isDone }"
+      :for="todo.id">
+      {{todo.name}}
+    </label>
+  </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 export default {
   props: {
     todo: {
-      type: Object,
-      required: true
+      required: true,
+      type: Object
     }
   },
   methods: {
-    ...mapMutations({
-      updateTodo: 'UPDATE_TODO'
-    })
+    updateTodo (todo) {
+      this.$emit('onUpdateTodo', todo)
+    }
   }
 }
 </script>
 
 <style scoped>
-li {
-  text-align: left;
-  list-style: none;
-}
-
-li label.done {
+label.done {
   text-decoration: line-through;
 }
 </style>

@@ -8,7 +8,7 @@
     {
       "id": 2,
       "name": "Check off first item",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": 3,

@@ -14,16 +14,15 @@ export default new Vuex.Store({
     },
     UPDATE_TODO (state, todo) {
       state.todos.find(o => o.id === todo.id).isDone = todo.isDone
-      // api.put(`/todos/${todo.id}`, todo)
+      api.put(`/todos/${todo.id}`, todo)
     }
   },
   actions: {
-    fetchTodos ({ commit, state }) {
+    async fetchTodos ({ commit, state }) {
       if (!state.todos) {
-        return api.get('/todos').then(response => {
-          commit('SET_TODOS', response.data)
-          return response.data
-        })
+        const { data } = await api.get('/todos')
+        commit('SET_TODOS', data)
+        return data
       }
     }
   }

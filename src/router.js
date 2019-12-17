@@ -12,9 +12,19 @@ export default new Router({
       component: () => import(/* webpackChunkName: "home" */ './views/Home.vue')
     },
     {
-      path: '/list',
-      name: 'list',
-      component: () => import('./views/List.vue')
+      path: '/reactivity',
+      name: 'reactivity',
+      component: () => import(/* webpackChunkName: "reactivity" */ './views/Reactivity.vue')
+    },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: () => import(/* webpackChunkName: "todo" */ './views/Todo.vue')
+    },
+    {
+      path: '/todo-vuex',
+      name: 'todo-vuex',
+      component: () => import(/* webpackChunkName: "todo-vuex" */ './views/TodoVuex.vue')
     }
   ]
 })
