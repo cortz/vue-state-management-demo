@@ -1,35 +1,33 @@
 <template>
-  <div v-if="data && !loading">
-    {{data}}
+  <div class="home">
+    <h1 class="text-center my-3">Todo List</h1>
+    <todo-list :todos="todos"  v-if="todos && !loading"/>
   </div>
 </template>
 
 <script>
 import api from '../../api'
+const TodoList = () => import('@/components/todo-list.vue')
 
 export default {
-  props: {
-    todoId: {
-      required: true,
-      type: Number
-    }
-  },
   data () {
     return {
       loading: true,
-      data: null
+      todos: null
     }
   },
+  components: {
+    TodoList
+  },
+  created () {
+    this.fetchTodos()
+  },
   methods: {
-    async fetchData () {
-      this.data = await api.get('/todos')
+    async fetchTodos () {
+      const { data } = await api.get('/todos')
+      this.todos = data
       this.loading = false
     }
   }
-
 }
 </script>
-
-<style>
-
-</style>
